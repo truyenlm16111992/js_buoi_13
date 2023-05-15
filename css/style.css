@@ -86,3 +86,6 @@ body{
 .pagedetail .pagedetail__modelblock ul{
     padding-left: 20px;
 }
+.pagedetail .pagedetail__modelblock h6{
+    font-weight: 600;
+}
