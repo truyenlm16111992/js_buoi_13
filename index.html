@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài tập DOM</title>
+    <!-- Font google  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Bootrap  -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/style.css">
+    <!-- Fontawesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <div class="container py-5">
+        <div class="box">
+            <div class="row m-0">
+                <div class="col-12 col-md-3 p-0">
+                    <div class="nav flex-column nav-pills h-100" id="v-pills-tab" role="tablist"
+                        aria-orientation="vertical">
+                        <button class="nav-link active" id="v-pills-bai-1-tab" data-toggle="pill"
+                            data-target="#v-pills-bai-1" type="button" role="tab" aria-controls="v-pills-bai-1"
+                            aria-selected="true">Bài 1</button>
+                        <button class="nav-link" id="v-pills-bai-2-tab" data-toggle="pill" data-target="#v-pills-bai-2"
+                            type="button" role="tab" aria-controls="v-pills-bai-2" aria-selected="false">Bài 2</button>
+                        <button class="nav-link" id="v-pills-bai-3-tab" data-toggle="pill" data-target="#v-pills-bai-3"
+                            type="button" role="tab" aria-controls="v-pills-bai-3" aria-selected="false">Bài 3</button>
+                        <button class="nav-link" id="v-pills-bai-4-tab" data-toggle="pill" data-target="#v-pills-bai-4"
+                            type="button" role="tab" aria-controls="v-pills-bai-4" aria-selected="false">Bài 4</button>
+                        <button class="nav-link" id="v-pills-bai-5-tab" data-toggle="pill" data-target="#v-pills-bai-5"
+                            type="button" role="tab" aria-controls="v-pills-bai-5" aria-selected="false">Bài 5</button>
+                    </div>
+                </div>
+                <div class="col-12 col-md-9">
+                    <div class="tab-content" id="v-pills-tabContent">
+                        <div class="tab-pane fade show active" id="v-pills-bai-1" role="tabpanel"
+                            aria-labelledby="v-pills-bai-1-tab">
+                            <div class="pagedetail">
+                                <div class="pagedetail__notice mb-3">
+                                    <p><i class="fa fa-exclamation pagedetail__icon"></i>Đây chỉ là gợi ý nên người làm
+                                        có thể làm khác gợi ý, miễn đúng theo yêu cầu trong file đề bài</p>
+                                </div>
+                                <div class="pagedetail__title mb-3">
+                                    <h3><i class="fa fa-money-bill-alt pagedetail__icon"></i>Tính tiền lương nhân viên
+                                    </h3>
+                                </div>
+                                <div class="pagedetail__hint mb-3">
+                                    <p>
+                                        <i class="fa fa-lightbulb pagedetail__icon"></i><b>Gợi ý:</b><br>
+                                        Công thức: Lương = Lương 1 ngày * số ngày làm<br>
+                                        Kiến thức áp dụng:
+                                    </p>
+                                    <ul>
+                                        <li>Tìm tới thẻ và lấy giá trị</li>
+                                        <li>Tạo hàm cơ bản</li>
+                                        <li>Gắn sự kiện click cho button</li>
+                                        <li>Thay đổi nội dung cho thẻ</li>
+                                        <li>Xử lý load trang với button của form</li>
+                                    </ul>
+                                </div>
+                                <form class="pagedetail__form mb-3">
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <input type="number" class="form-control" id="tbLuong"
+                                                placeholder="Nhập lương một ngày" value="100000">
+                                        </div>
+                                        <div class="form-group mx-sm-3">
+                                            <input type="number" class="form-control" id="tbSoNgayLam"
+                                                placeholder="Số ngày làm">
+                                        </div>
+                                    </div>
+                                    <button id="btnExecute_b1" type="button" class="btn btn-primary mb-2">Tính
+                                        lương</button>
+                                </form>
+                                <div class="pagedetail__result alert alert-success mb-3">
+                                    <i class="fa fa-hand-point-right pagedetail__icon"></i>
+                                    <span id="result_b1"></span>
+                                </div>
+                                <div class="pagedetail__model">
+                                    <div class="pagedetail__title">
+                                        <h3><i class="fa fa-cubes pagedetail__icon"></i>Mô hình 3 khối</h3>
+                                    </div>
+                                    <div class="row m-0">
+                                        <div class="pagedetail__modelitem col-12 col-lg-3 pb-2 pb-lg-0">
+                                            <div class="pagedetail__modelblock">
+                                                <h6>Đầu vào</h6>
+                                                <ul>
+                                                    <li>Lương 1 ngày làm (mặc định 100,000 VNĐ)</li>
+                                                    <li>Tổng lương của nhân viên</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="pagedetail__modelitem col-12 col-lg-6 pb-2 pb-lg-0">
+                                            <div class="pagedetail__modelblock">
+                                                <h6>Các bước xử lý</h6>
+                                                <ul>
+                                                    <li><b>Bước 1:</b> Tạo 2 biến để lưu giá trị lương và số ngày làm
+                                                        việc</li>
+                                                    <li><b>Bước 2:</b> DOM đến element form để lấy và gán giá trị người
+                                                        dùng nhập
+                                                        vào 2 biến trên</li>
+                                                    <li><b>Bước 3:</b> Viết function xử lý tính lương theo công thức
+                                                        <br>Tổng
+                                                        lương=Lương của 1 ngày * số ngày làm việc
+                                                    </li>
+                                                    <li><b>Bước 4:</b> DOM đến element hiển thị kết quả, gán kết quả trả
+                                                        về của function xử lý tính tổng lương với tham số truyền vào là
+                                                        2 biến đã lấy giá trị ở <b>bước 2</b>.</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="pagedetail__modelitem col-12 col-lg-3 pb-2 pb-lg-0">
+                                            <div class="pagedetail__modelblock">
+                                                <h6>Đầu ra</h6>
+                                                Tổng lương của nhân viên
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="v-pills-bai-2" role="tabpanel"
+                            aria-labelledby="v-pills-bai-2-tab">
+                            <div class="pagedetail">
+                                <div class="pagedetail__notice mb-3">
+                                    <p><i class="fa fa-exclamation pagedetail__icon"></i>Đây chỉ là gợi ý nên người làm
+                                        có thể làm khác
+                                        gợi ý, miễn đúng theo yêu cầu trong file đề bài</p>
+                                </div>
+                                <div class="pagedetail__title mb-3">
+                                    <h3><i class="fa fa-calculator pagedetail__icon"></i>Tính giá trị trung bình
+                                    </h3>
+                                </div>
+                                <div class="pagedetail__hint mb-3">
+                                    <p>
+                                        <i class="fa fa-lightbulb pagedetail__icon"></i><b>Gợi ý:</b><br>
+                                        Kiến thức áp dụng:
+                                    </p>
+                                    <ul>
+                                        <li>Tìm tới thẻ và lấy giá trị</li>
+                                        <li>Tạo hàm cơ bản</li>
+                                        <li>Gắn sự kiện click cho button</li>
+                                        <li>Thay đổi nội dung cho thẻ</li>
+                                        <li>Xử lý load trang với button của form</li>
+                                        <li>Xử lý ép kiểu dữ liệu</li>
+                                    </ul>
+                                </div>
+                                <form class="pagedetail__form mb-3">
+                                    <div class="form-row">
+                                        <div class="form-group col-12 col-sm-6 col-md-4">
+                                            <input type="number" class="form-control" id="tbSoThu1"
+                                                placeholder="Nhập số thứ 1">
+                                        </div>
+                                        <div class="form-group col-12 col-sm-6 col-md-4">
+                                            <input type="number" class="form-control" id="tbSoThu2"
+                                                placeholder="Nhập số thứ 2">
+                                        </div>
+                                        <div class="form-group col-12 col-sm-6 col-md-4">
+                                            <input type="number" class="form-control" id="tbSoThu3"
+                                                placeholder="Nhập số thứ 3">
+                                        </div>
+                                        <div class="form-group col-12 col-sm-6 col-md-4">
+                                            <input type="number" class="form-control" id="tbSoThu4"
+                                                placeholder="Nhập số thứ 4">
+                                        </div>
+                                        <div class="form-group col-12 col-sm-6 col-md-4">
+                                            <input type="number" class="form-control" id="tbSoThu5"
+                                                placeholder="Nhập số thứ 5">
+                                        </div>
+                                    </div>
+                                    <button id="btnExecute_b2" type="button" class="btn btn-primary mb-2">Tính trung
+                                        bình</button>
+                                </form>
+                                <div class="pagedetail__result alert alert-success mb-3">
+                                    <i class="fa fa-hand-point-right pagedetail__icon"></i>
+                                    <span id="result_b2"></span>
+                                </div>
+                                <div class="pagedetail__model">
+                                    <div class="pagedetail__title">
+                                        <h3><i class="fa fa-cubes pagedetail__icon"></i>Mô hình 3 khối</h3>
+                                    </div>
+                                    <div class="row m-0">
+                                        <div class="pagedetail__modelitem col-12 col-lg-3 pb-2 pb-lg-0">
+                                            <div class="pagedetail__modelblock">
+                                                <h6>Đầu vào</h6>
+                                                <ul>
+                                                    <li>Số thứ 1</li>
+                                                    <li>Số thứ 2</li>
+                                                    <li>Số thứ 3</li>
+                                                    <li>Số thứ 4</li>
+                                                    <li>Số thứ 5</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="pagedetail__modelitem col-12 col-lg-6 pb-2 pb-lg-0">
+                                            <div class="pagedetail__modelblock">
+                                                <h6>Các bước xử lý</h6>
+                                                <ul>
+                                                    <li><b>Bước 1:</b> Tạo 5 biến để lưu giá trị của 5 số</li>
+                                                    <li><b>Bước 2:</b> DOM đến element form để lấy và gán giá trị người
+                                                        dùng nhập vào 5 biến trên</li>
+                                                    <li><b>Bước 3:</b> Viết function xử lý trung bình của các số nhập
+                                                        vào
+                                                        <br>Giá trị trung bình=Tổng các số (từ số thứ 1 - số thứ 5) / 5
+                                                    </li>
+                                                    <li><b>Bước 4:</b> DOM đến element hiển thị kết quả, gán kết quả trả
+                                                        về của function xử lý tính giá trị trung bình với tham số truyền
+                                                        vào là
+                                                        5 biến đã lấy giá trị ở <b>bước 2</b>.</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="pagedetail__modelitem col-12 col-lg-3 pb-2 pb-lg-0">
+                                            <div class="pagedetail__modelblock">
+                                                <h6>Đầu ra</h6>
+                                                Giá trị trung bình
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="v-pills-bai-3" role="tabpanel"
+                            aria-labelledby="v-pills-bai-3-tab">
+                            <div class="pagedetail">
+                                <div class="pagedetail__notice mb-3">
+                                    <p><i class="fa fa-exclamation pagedetail__icon"></i>Đây chỉ là gợi ý nên người làm
+                                        có thể làm khác
+                                        gợi ý, miễn đúng theo yêu cầu trong file đề bài</p>
+                                </div>
+                                <div class="pagedetail__title mb-3">
+                                    <h3><i class="fa fa-exchange-alt pagedetail__icon"></i>Quy đổi tiền</h3>
+                                </div>
+                                <div class="pagedetail__hint mb-3">
+                                    <p>
+                                        <i class="fa fa-lightbulb pagedetail__icon"></i><b>Gợi ý:</b><br>
+                                        Kiến thức áp dụng:
+                                    </p>
+                                    <ul>
+                                        <li>Áp dụng các kiến thức như bài 1 và 2</li>
+                                        <li>Giá USD mặc định 1 USD = 23500</li>
+                                        <li>Có thể dùng thêm NumberFormat để số tiền hiển thị đẹp hơn: <a
+                                                href="#">NumberFormat</a><br>VD: new
+                                            Intl.NumberFormat('vn-VN').format(23500); => 23,500</li>
+                                    </ul>
+                                </div>
+                                <form class="pagedetail__form mb-3">
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <input type="number" class="form-control" id="tbUSD"
+                                                placeholder="Nhập số tiền USD">
+                                        </div>
+                                    </div>
+                                    <button id="btnExecute_b3" type="button" class="btn btn-primary mb-2">Quy đổi
+                                        tiền</button>
+                                </form>
+                                <div class="pagedetail__result alert alert-success mb-3">
+                                    <i class="fa fa-hand-point-right pagedetail__icon"></i>
+                                    <span id="result_b3"></span>
+                                </div>
+                                <div class="pagedetail__model">
+                                    <div class="pagedetail__title">
+                                        <h3><i class="fa fa-cubes pagedetail__icon"></i>Mô hình 3 khối</h3>
+                                    </div>
+                                    <div class="row m-0">
+                                        <div class="pagedetail__modelitem col-12 col-lg-3 pb-2 pb-lg-0">
+                                            <div class="pagedetail__modelblock">
+                                                <h6>Đầu vào</h6>
+                                                <ul>
+                                                    <li>Số tiền USD</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="pagedetail__modelitem col-12 col-lg-6 pb-2 pb-lg-0">
+                                            <div class="pagedetail__modelblock">
+                                                <h6>Các bước xử lý</h6>
+                                                <ul>
+                                                    <li><b>Bước 1:</b> Tạo 1 biến để lưu giá trị USD</li>
+                                                    <li><b>Bước 2:</b> DOM đến element form để lấy và gán giá trị người
+                                                        dùng nhập biến đã tạo ở <b>bước 1</b></li>
+                                                    <li><b>Bước 3:</b> Viết function xử lý quy đổi tiền USD sang VNĐ<br>
+                                                        - Tạo 1 biến tạm khai báo đơn giá VNĐ của 1 USD
+                                                        (1USD=23,500VNĐ).<br>
+                                                        - Tổng tiền quy đổi sang VNĐ=Số tiền USD * Biến đơn giá VNĐ của
+                                                        1 USD
+                                                    </li>
+                                                    <li><b>Bước 4:</b> DOM đến element hiển thị kết quả, gán kết quả trả
+                                                        về của function xử lý quy đổi tiền sang VNĐ với tham số truyền
+                                                        vào là
+                                                        biến đã lấy giá trị ở <b>bước 2</b>.</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="pagedetail__modelitem col-12 col-lg-3 pb-2 pb-lg-0">
+                                            <div class="pagedetail__modelblock">
+                                                <h6>Đầu ra</h6>
+                                                Số tiền quy đổi sang VNĐ
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="v-pills-bai-4" role="tabpanel"
+                            aria-labelledby="v-pills-bai-4-tab">
+                            <div class="pagedetail">
+                                <div class="pagedetail__notice mb-3">
+                                    <p><i class="fa fa-exclamation pagedetail__icon"></i>Đây chỉ là gợi ý nên người làm
+                                        có thể làm khác
+                                        gợi ý, miễn đúng theo yêu cầu trong file đề bài</p>
+                                </div>
+                                <div class="pagedetail__title mb-3">
+                                    <h3><i class="fa fa-calculator pagedetail__icon"></i>Tính diện tích, chu vi hình chữ
+                                        nhật</h3>
+                                </div>
+                                <div class="pagedetail__hint mb-3">
+                                    <p>
+                                        <i class="fa fa-lightbulb pagedetail__icon"></i><b>Gợi ý:</b><br>
+                                        Kiến thức áp dụng:
+                                    </p>
+                                    <ul>
+                                        <li>Áp dụng các kiến thức như các bài trước</li>
+                                        <li>Diện tích: dài x rộng</li>
+                                        <li>Chu vi: (dài + rộng) x 2</li>
+                                    </ul>
+                                </div>
+                                <form class="pagedetail__form mb-3">
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <input type="number" class="form-control" id="tbChieuDai"
+                                                placeholder="Nhập chiều dài (cm)">
+                                        </div>
+                                        <div class="form-group mx-sm-3">
+                                            <input type="number" class="form-control" id="tbChieuRong"
+                                                placeholder="Nhập chiều rộng (cm)">
+                                        </div>
+                                    </div>
+                                    <button id="btnExecute_b4" type="button" class="btn btn-primary mb-2">Tính</button>
+                                </form>
+                                <div class="pagedetail__result alert alert-success mb-3">
+                                    <i class="fa fa-hand-point-right pagedetail__icon"></i>
+                                    <span id="result_b4"></span>
+                                </div>
+                                <div class="pagedetail__model">
+                                    <div class="pagedetail__title">
+                                        <h3><i class="fa fa-cubes pagedetail__icon"></i>Mô hình 3 khối</h3>
+                                    </div>
+                                    <div class="row m-0">
+                                        <div class="pagedetail__modelitem col-12 col-lg-3 pb-2 pb-lg-0">
+                                            <div class="pagedetail__modelblock">
+                                                <h6>Đầu vào</h6>
+                                                <ul>
+                                                    <li>Chiều dài hình chữ nhật</li>
+                                                    <li>Chiều rộng hình chữ nhật</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="pagedetail__modelitem col-12 col-lg-6 pb-2 pb-lg-0">
+                                            <div class="pagedetail__modelblock">
+                                                <h6>Các bước xử lý</h6>
+                                                <ul>
+                                                    <li><b>Bước 1:</b> Tạo 2 biến để lưu giá trị chiều dài và chiều rộng
+                                                        hình chữ nhật</li>
+                                                    <li><b>Bước 2:</b> DOM đến element form để lấy và gán giá trị người
+                                                        dùng nhập vào 2 biến trên</li>
+                                                    <li><b>Bước 3:</b> Viết function xử lý tính diện tích hình chữ nhật
+                                                        <br>Diện tích=Chiều dài * Chiều rộng
+                                                    </li>
+                                                    <li><b>Bước 4:</b> Viết function xử lý tính chu vi hình chữ nhật
+                                                        <br>Chu vi=(Chiều dài + Chiều rộng) * 2
+                                                    </li>
+                                                    <li><b>Bước 5:</b> DOM đến element hiển thị kết quả, gán kết quả trả
+                                                        về của 02 function xử lý tính diện tích và chu vi hình chữ nhật
+                                                        với tham số truyền vào là 2 biến đã lấy giá trị ở <b>bước 2</b>.
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="pagedetail__modelitem col-12 col-lg-3 pb-2 pb-lg-0">
+                                            <div class="pagedetail__modelblock">
+                                                <h6>Đầu ra</h6>
+                                                Diện tích và chu vi hình chữ nhật
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="v-pills-bai-5" role="tabpanel"
+                            aria-labelledby="v-pills-bai-5-tab">
+                            <div class="pagedetail">
+                                <div class="pagedetail__notice mb-3">
+                                    <p><i class="fa fa-exclamation pagedetail__icon"></i>Đây chỉ là gợi ý nên người làm
+                                        có thể làm khác
+                                        gợi ý, miễn đúng theo yêu cầu trong file đề bài</p>
+                                </div>
+                                <div class="pagedetail__title mb-3">
+                                    <h3><i class="fa fa-calculator pagedetail__icon"></i>Tính tổng 2 ký số</h3>
+                                </div>
+                                <div class="pagedetail__hint mb-3">
+                                    <p>
+                                        <i class="fa fa-lightbulb pagedetail__icon"></i><b>Gợi ý:</b><br>
+                                        Kiến thức áp dụng:
+                                    </p>
+                                    <ul>
+                                        <li>Áp dụng cách tính như demo tổng 3 ký số trên lớp</li>
+                                    </ul>
+                                </div>
+                                <form class="pagedetail__form mb-3">
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <input type="number" class="form-control" id="tbSo"
+                                                placeholder="Nhập số có 2 chữ số">
+                                        </div>
+                                    </div>
+                                    <button id="btnExecute_b5" type="button" class="btn btn-primary mb-2">Tính
+                                        tổng</button>
+                                </form>
+                                <div class="pagedetail__result alert alert-success mb-3">
+                                    <i class="fa fa-hand-point-right pagedetail__icon"></i>
+                                    <span id="result_b5"></span>
+                                </div>
+                                <div class="pagedetail__model">
+                                    <div class="pagedetail__title">
+                                        <h3><i class="fa fa-cubes pagedetail__icon"></i>Mô hình 3 khối</h3>
+                                    </div>
+                                    <div class="row m-0">
+                                        <div class="pagedetail__modelitem col-12 col-lg-3 pb-2 pb-lg-0">
+                                            <div class="pagedetail__modelblock">
+                                                <h6>Đầu vào</h6>
+                                                <ul>
+                                                    <li>Con số bất kỳ</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="pagedetail__modelitem col-12 col-lg-6 pb-2 pb-lg-0">
+                                            <div class="pagedetail__modelblock">
+                                                <h6>Các bước xử lý</h6>
+                                                <ul>
+                                                    <li><b>Bước 1:</b> Tạo 1 biến để lưu giá trị số nhập vào</li>
+                                                    <li><b>Bước 2:</b> DOM đến element form để lấy và gán giá trị người
+                                                        dùng nhập biến đã tạo ở <b>bước 1</b></li>
+                                                    <li><b>Bước 3:</b> Viết function xử lý tính tổng 2 ký số của số
+                                                        người dùng nhập<br>
+                                                        - Tạo 1 biến tạm tách số hàng đơn vị của con số người dùng
+                                                        nhập:<br>
+                                                        Số hàng đơn vị = Số % 10<br>
+                                                        - Tạo 1 biến tạm tách số hàng chục của con số người dùng
+                                                        nhập:<br>
+                                                        Số hàng chục = Số / 10<br>
+                                                        - Tổng 2 ký số= Biến tạm hàng đơn vị + Biến tạm hàng chục
+                                                    </li>
+                                                    <li><b>Bước 4:</b> DOM đến element hiển thị kết quả, gán kết quả trả
+                                                        về của function xử lý tổng 2 ký số với tham số truyền
+                                                        vào là biến đã lấy giá trị ở <b>bước 2</b>.</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="pagedetail__modelitem col-12 col-lg-3 pb-2 pb-lg-0">
+                                            <div class="pagedetail__modelblock">
+                                                <h6>Đầu ra</h6>
+                                                Giá trị tổng 2 ký số
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+        crossorigin="anonymous"></script>
+    <script src="./js/index.js"></script>
+</body>
+
+</html>
